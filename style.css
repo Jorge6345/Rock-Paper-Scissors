@@ -2,8 +2,8 @@ body {
     background-color: #2b3037;
     display: flex;
     justify-content: center;
-    align-items: center;
     min-height: 100vh;
+    margin: 0;
 }
 
 .match-information {
@@ -12,8 +12,10 @@ body {
     align-items: center;
     justify-items: center;
     gap: 10px;
-    padding-bottom: 350px;
+    padding-bottom: 30px;
     padding-top: 40px;
+    margin-top: 30px;
+    height: 480px;
 }
 
 .current-round {
@@ -26,7 +28,9 @@ body {
 }
 
 .buttons-container {
+    justify-content: center;
     display: flex;
+    flex-wrap: wrap;
     gap: 15px;
 }
 
@@ -37,8 +41,10 @@ body {
     min-width: 100%;
     text-align: left;
     padding-top: 10px;
-    padding-bottom: 30px;
+    padding-bottom: 25px;
+    min-height: 48px;
     gap: 10px;
+    justify-content: center;
 }
 
 .button {
@@ -66,14 +72,27 @@ body {
     font-size: 18px;
 }
 
-.display-round-winner {
+.round-winner-container {
+    align-content: center;
+    text-align: center;
     margin-top: 25px;
     color: bisque;
     font-size: 20px;
+    min-width: 100%;
+    min-height: 30px;
+}
+
+.play-again-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 255px;
 }
 
 .play-again {
-    margin-top: 200px;
+    margin-top: 150px;
+    margin-bottom: 0;
     background-color:burlywood;
     color: white;
     max-width: 150px;

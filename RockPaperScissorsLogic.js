@@ -9,6 +9,7 @@ const scissorsButton = document.querySelector("#scissors-button");
 
 const displayCurrentRound = document.querySelector(".current-round");
 
+const displayChoicesContainer = document.querySelector(".choices");
 const displayComputerChoice = document.querySelector(".computer-choice");
 const displayHumanChoice = document.querySelector(".human-choice");
 
@@ -93,6 +94,7 @@ function playGame(humanSelection) {
         paperButton.disabled = true;
         scissorsButton.disabled = true;
 
+        playAgainButton.style.display = "block";
         // After match is over, reset match if "Play again" button is pressed 
         playAgainButton.addEventListener("click", () => {
             currentRound = 1;
@@ -112,6 +114,10 @@ function playGame(humanSelection) {
             displayScore();
 
             displayRoundWinner.textContent = "";
+
+            playAgainButton.style.display = "none";
+            displayComputerChoice.style.display = "none";
+            displayHumanChoice.style.display = "none";
         });
     }
 
@@ -119,12 +125,15 @@ function playGame(humanSelection) {
     if (currentRound <= numberOfRounds) {
         displayCurrentRound.textContent = "Current Round: " + currentRound + "/" + numberOfRounds;
     }
+    displayComputerChoice.style.display = "block";
+    displayHumanChoice.style.display = "block";
     displayComputerChoice.textContent = "The computer selected " + computerSelection.toUpperCase() + " on round #" + (currentRound - 1);
     displayHumanChoice.textContent = "You selected " + humanSelection.toUpperCase() + " on round #" + (currentRound - 1);
 
     displayScore();
 }
 
+playAgainButton.style.display = "none";
 displayCurrentRound.textContent = "Current Round: " + currentRound + "/" + numberOfRounds;
 rockButton.addEventListener("click", () => playGame("rock", currentRound));
 paperButton.addEventListener("click", () => playGame("paper", currentRound));
