@@ -1,0 +1,88 @@
+body {
+    background-color: #2b3037;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.match-information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    gap: 10px;
+    padding-bottom: 350px;
+    padding-top: 40px;
+}
+
+.current-round {
+    width: 100%;
+    font-weight: 900;
+    font-size: 26px;
+    color: #1499d2;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 15px;
+}
+
+.choices {
+    display: flex;
+    flex-direction: column;
+    color: rgb(184, 184, 184);
+    min-width: 100%;
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    gap: 10px;
+}
+
+.button {
+    background-color: #026bff;
+    color: white;
+    max-width: 130px;
+    min-width: 130px;
+    padding: 9px;
+    border-radius: 6px;
+    border: 0;
+    cursor: pointer;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.current-scores {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+    padding-top: 10px;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.display-round-winner {
+    margin-top: 25px;
+    color: bisque;
+    font-size: 20px;
+}
+
+.play-again {
+    margin-top: 200px;
+    background-color:burlywood;
+    color: white;
+    max-width: 150px;
+    min-width: 150px;
+    min-height: 45px;
+    padding: 9px;
+    border-radius: 6px;
+    border: 0;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+}

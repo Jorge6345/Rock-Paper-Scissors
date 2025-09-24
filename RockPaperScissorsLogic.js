@@ -1,5 +1,23 @@
 let humanScore = 0;
 let computerScore = 0;
+let currentRound = 1;
+const numberOfRounds = 5;
+
+const rockButton = document.querySelector("#rock-button");
+const paperButton = document.querySelector("#paper-button");
+const scissorsButton = document.querySelector("#scissors-button");
+
+const displayCurrentRound = document.querySelector(".current-round");
+
+const displayComputerChoice = document.querySelector(".computer-choice");
+const displayHumanChoice = document.querySelector(".human-choice");
+
+const displayHumanScore = document.querySelector(".player-score");
+const displayComputerScore = document.querySelector(".computer-score");
+
+const displayRoundWinner = document.querySelector(".display-round-winner");
+
+const playAgainButton = document.querySelector(".play-again");
 
 function getComputerChoice() {
     let randomNumber = Math.random();
@@ -16,13 +34,6 @@ function getComputerChoice() {
     }
 
     return randomChoice;
-}
-
-function getHumanChoice() {
-    let humanChoice = prompt("Tell me whether you want to play rock, paper, or scissors:");
-    let lowerCaseHumanChoice = humanChoice.toLocaleLowerCase();
-
-    return lowerCaseHumanChoice;
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -55,42 +66,66 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-function displayScore(currentRound, numberOfRounds) {
+function displayScore() {
+    displayHumanScore.textContent = "Your Score: " + humanScore;
+    displayComputerScore.textContent = "Computer Score: " + computerScore;
+}
+
+function playGame(humanSelection) {
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+
+    if (currentRound >= numberOfRounds)
+    {
+        displayComputerChoice.textContent = "The computer selected " + computerSelection + " on round#" + (currentRound);
+
+        if (humanScore > computerScore) {
+            displayRoundWinner.textContent = "You won this match!";
+        }
+        else if (humanScore < computerScore) {
+            displayRoundWinner.textContent = "You lost this match.";
+        }
+        else {
+            displayRoundWinner.textContent = "This match is a tie.";
+        }
+
+        rockButton.disabled = true;
+        paperButton.disabled = true;
+        scissorsButton.disabled = true;
+
+        // After match is over, reset match if "Play again" button is pressed 
+        playAgainButton.addEventListener("click", () => {
+            currentRound = 1;
+            humanScore = 0;
+            computerScore = 0;
+
+            rockButton.disabled = false;
+            paperButton.disabled = false;
+            scissorsButton.disabled = false;
+
+            if (currentRound <= numberOfRounds) {
+                displayCurrentRound.textContent = "Current Round: " + currentRound + "/" + numberOfRounds;
+            }
+            displayComputerChoice.textContent = "The computer selected " + computerSelection.toUpperCase() + " on round #" + (currentRound - 1);
+            displayHumanChoice.textContent = "You selected " + humanSelection.toUpperCase() + " on round #" + (currentRound - 1);
+
+            displayScore();
+
+            displayRoundWinner.textContent = "";
+        });
+    }
+
+    currentRound++;
     if (currentRound <= numberOfRounds) {
-        console.log("Your current score: " + humanScore);
-        console.log("Computer current score: " + computerScore);
+        displayCurrentRound.textContent = "Current Round: " + currentRound + "/" + numberOfRounds;
     }
-    else {
-        console.log("Your final score: " + humanScore);
-        console.log("Computer final score: " + computerScore);
-    }
+    displayComputerChoice.textContent = "The computer selected " + computerSelection.toUpperCase() + " on round #" + (currentRound - 1);
+    displayHumanChoice.textContent = "You selected " + humanSelection.toUpperCase() + " on round #" + (currentRound - 1);
+
+    displayScore();
 }
 
-function playGame() {
-    const numberOfRounds = 5;
-
-    for (let currentRound = 1; currentRound <= numberOfRounds; currentRound++) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-
-        console.log("You selected: " + humanSelection);
-        console.log("The computer selected: " + computerSelection);
-
-        playRound(humanSelection, computerSelection);
-        displayScore(currentRound, numberOfRounds);
-        console.log();
-    }
-
-    if (humanScore > computerScore) {
-        console.log("You win the entire match!");
-    }
-    else if (humanScore < computerScore) {
-        console.log("You lose the entire match!");
-    }
-    else {
-        console.log("The match is a tie!");
-    }
-    displayScore(numberOfRounds + 1, numberOfRounds);
-}
-
-playGame();
+displayCurrentRound.textContent = "Current Round: " + currentRound + "/" + numberOfRounds;
+rockButton.addEventListener("click", () => playGame("rock", currentRound));
+paperButton.addEventListener("click", () => playGame("paper", currentRound));
+scissorsButton.addEventListener("click", () => playGame("scissors", currentRound));

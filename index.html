@@ -5,9 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <script src="./RockPaperScissorsLogic.js" defer></script>
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
     
+    <div class="match-information">
+        <div class="current-round"></div>
+        
+        <div class="buttons-container">
+            <button class="button" id="rock-button">Rock</button>
+            <button class="button" id="paper-button">Paper</button>
+            <button class="button" id="scissors-button">Scissors</button>
+        </div>
+
+        <div class="choices">
+            <div class="computer-choice"></div>
+            <div class="human-choice"></div>
+        </div>
+
+        <div class="current-scores">
+            <div class="player-score">Your Score: 0</div>
+            <div class="computer-score">Computer Score: 0</div>
+        </div>
+
+        <div class="display-round-winner"></div>
+
+        <button class="play-again">Play again</button>
+    </div>
+
 </body>
 </html>
